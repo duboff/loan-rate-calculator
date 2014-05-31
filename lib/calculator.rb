@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+require 'csv'
+
 class Calculator
 
   attr_accessor :rate, :initial_amount, :lender_proposals
