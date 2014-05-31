@@ -27,6 +27,15 @@ class Calculator
     self.lender_proposals.map {|prop| prop[2] }.inject(:+)
   end
 
+  def monthly_rate
+    rate / 12
+  end
+
+
+  def monthly_payment
+    (monthly_rate * initial_amount / (1 - ((1+monthly_rate) ** - 36))).round(2)
+  end
+
 
 
 end
