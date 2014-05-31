@@ -39,4 +39,10 @@ describe Calculator do
     expect(calc.monthly_payment).to eq 30.88
   end
 
+  it 'calculates total payment' do
+    calc.lender_proposals = lender_proposals1
+    calc.get_rate
+    expect(calc.total_payment).to eq 30.88 * 36
+  end
+
 end

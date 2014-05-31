@@ -3,6 +3,11 @@
 class Calculator
 
   attr_accessor :rate, :initial_amount, :lender_proposals
+  attr_reader :n
+
+  def initialize
+    @n = 36
+  end
 
   def get_rate
     if total_market < initial_amount
@@ -31,11 +36,12 @@ class Calculator
     rate / 12
   end
 
-
   def monthly_payment
-    (monthly_rate * initial_amount / (1 - ((1+monthly_rate) ** - 36))).round(2)
+    (monthly_rate * initial_amount / (1 - ((1 + monthly_rate) ** -n))).round(2)
   end
 
-
+  def total_payment
+    monthly_payment * n
+  end
 
 end
