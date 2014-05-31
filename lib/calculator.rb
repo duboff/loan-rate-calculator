@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+
 
 require 'csv'
 
@@ -12,7 +12,7 @@ class Calculator
   end
 
   def get_rate
-    if total_market < initial_amount
+    if not_enough_funds?
       rate = nil
       return true
     end
@@ -44,6 +44,14 @@ class Calculator
 
   def total_payment
     monthly_payment * n
+  end
+
+  def illegal_amount?
+    initial_amount > 1500 || initial_amount < 1000 || initial_amount % 100 != 0
+  end
+
+  def not_enough_funds?
+    total_market < initial_amount
   end
 
 end
