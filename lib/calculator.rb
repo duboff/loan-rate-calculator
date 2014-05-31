@@ -5,8 +5,12 @@ class Calculator
   attr_accessor :rate, :initial_amount, :lender_proposals
 
   def get_rate
-    sorted_proposals = self.lender_proposals.sort_by {|prop| prop[1] }
+    if total_market < initial_amount
+      rate = nil
+      return true
+    end
 
+    sorted_proposals = self.lender_proposals.sort_by {|prop| prop[1] }
     rates = sorted_proposals.map {|prop| prop[1] }
     amts = sorted_proposals.map {|prop| prop[2] }
     result = 0
@@ -18,5 +22,11 @@ class Calculator
     end
     self.rate = (result / self.initial_amount).round(2)
   end
+
+  def total_market
+    self.lender_proposals.map {|prop| prop[2] }.inject(:+)
+  end
+
+
 
 end
