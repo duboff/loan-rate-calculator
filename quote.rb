@@ -18,8 +18,8 @@ def output(calculator)
   raise 'Rates cannot be negative' if calculator.rate < 0
   puts "Requested amount: £#{calculator.initial_amount}"
   puts "Rate: #{(calculator.rate * 100).round(2)}%"
-  puts "Monthly repayment: £#{calculator.monthly_payment}"
-  puts "Total repayment: £#{calculator.total_payment}"
+  puts "Monthly repayment: £#{calculator.monthly_payment.round(2)}"
+  puts "Total repayment: £#{calculator.total_payment.round(2)}"
 end
 
 if calc.illegal_amount?

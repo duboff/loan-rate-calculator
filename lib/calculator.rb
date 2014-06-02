@@ -8,7 +8,7 @@ class Calculator
   attr_reader :n
 
   def initialize
-    @n = 36
+    @n = 36.0
   end
 
   def get_rate
@@ -39,6 +39,7 @@ class Calculator
   end
 
   def monthly_payment
+    return initial_amount / n if monthly_rate == 0
     monthly_rate * initial_amount / (1 - ((1 + monthly_rate) ** -n))
   end
 
