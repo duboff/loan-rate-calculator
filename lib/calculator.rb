@@ -27,7 +27,7 @@ class Calculator
       result += cur_rate * a
       amount -= a if amount > 0
     end
-    self.rate = (result / self.initial_amount).round(2)
+    self.rate = (result / self.initial_amount)
   end
 
   def total_market
@@ -39,7 +39,7 @@ class Calculator
   end
 
   def monthly_payment
-    (monthly_rate * initial_amount / (1 - ((1 + monthly_rate) ** -n))).round(2)
+    monthly_rate * initial_amount / (1 - ((1 + monthly_rate) ** -n))
   end
 
   def total_payment

@@ -22,8 +22,6 @@ def output(calculator)
   puts "Total repayment: £#{calculator.total_payment}"
 end
 
-
-
 if calc.illegal_amount?
   puts 'Illegal loan amount. Amount should be in increment of 100 between 1000 and 1500'
 elsif calc.not_enough_funds?
