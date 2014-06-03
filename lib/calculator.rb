@@ -11,23 +11,29 @@ class Calculator
     @n = 36.0
   end
 
-  def get_rate
-    if not_enough_funds?
-      rate = nil
-      return true
-    end
 
-    sorted_proposals = self.lender_proposals.sort_by {|prop| prop[1] }
-    rates = sorted_proposals.map {|prop| prop[1] }
-    amts = sorted_proposals.map {|prop| prop[2] }
+
+  def get_rate
     result = 0
     amount = initial_amount
     rates.each_with_index do |cur_rate, i|
-      a = [amts[i], amount].min
+      a = [amounts[i], amount].min
       result += cur_rate * a
       amount -= a if amount > 0
     end
-    self.rate = (result / self.initial_amount)
+    not_enough_funds? ? rate = nil : self.rate = (result / self.initial_amount)
+  end
+
+  def sorted_proposals
+    self.lender_proposals.sort_by {|prop| prop[1] }
+  end
+
+  def rates
+    sorted_proposals.map {|prop| prop[1] }
+  end
+
+  def amounts
+    sorted_proposals.map {|prop| prop[2] }
   end
 
   def total_market
