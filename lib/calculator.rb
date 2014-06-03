@@ -1,5 +1,3 @@
-
-
 require 'csv'
 
 class Calculator
@@ -10,8 +8,6 @@ class Calculator
   def initialize
     @n = 36.0
   end
-
-
 
   def get_rate
     result = 0
